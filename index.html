@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王小明 | AI 工程師 Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f2f6fb;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: rgba(255, 255, 255, 0.88);
+      --surface-dark: rgba(20, 28, 40, 0.06);
+      --text: #111827;
+      --muted: #586075;
+      --primary: #4f7cff;
+      --accent: #6d8cff;
+      --success: #25c6a9;
+      --border: rgba(255, 255, 255, 0.85);
+      --shadow: 0 36px 96px rgba(56, 80, 126, 0.12);
+      font-family: "Helvetica Neue", "Roboto", "Apple SD Gothic Neo", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(115, 137, 255, 0.18), transparent 24%),
+                  radial-gradient(circle at right center, rgba(35, 175, 255, 0.12), transparent 18%),
+                  linear-gradient(180deg, #eef4fc 0%, #f7f9fd 52%, #fbfcff 100%);
+      color: var(--text);
+    }
+
+    .page-shell {
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 110px 24px 60px;
+    }
+
+    .toc {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .toc a:hover,
+    .toc a:focus-visible {
+      background: rgba(79, 124, 255, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      border-radius: 28px;
+    }
+
+    .hero-card {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 320px) 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #6d8cff 20%, #3b5cff 88%);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 5rem;
+      font-weight: 800;
+      box-shadow: inset 0 16px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-avatar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 45%);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      line-height: 1;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 680px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(79, 124, 255, 0.12);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .panel {
+      display: grid;
+      gap: 24px;
+      padding: 28px;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .about-grid p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .about-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .badge {
+      padding: 16px 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .skills-grid,
+    .award-grid,
+    .project-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .skill-group {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 16px;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(79, 124, 255, 0.12);
+      color: #2f4f9e;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      gap: 10px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .timeline-header h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .timeline-item p,
+    .timeline-item ul {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .stat span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(79, 124, 255, 0.18);
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .award-card,
+    .project-card {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .award-card:hover,
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 80px rgba(56, 80, 126, 0.14);
+    }
+
+    .badge-emoji {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .award-card h3,
+    .project-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+
+    .award-card p,
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      color: var(--primary);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 58px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(79, 124, 255, 0.12);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-button:hover,
+    .contact-button:focus-visible {
+      background: rgba(79, 124, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .section-subtitle {
+      font-size: 1.24rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-avatar {
+        margin: 0 auto;
+      }
+
+      .hero-copy {
+        align-items: center;
+      }
+
+      .about-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        padding: 90px 16px 40px;
+      }
+
+      .toc {
+        width: calc(100% - 32px);
+        left: 16px;
+        transform: none;
+      }
+
+      .hero-card {
+        padding: 28px 18px;
+      }
+
+      .panel {
+        padding: 22px 18px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toc" aria-label="Section navigation">
+    <a href="#hero">Hero</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#awards">Awards</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main class="page-shell">
+    <section id="hero" class="section card hero-card">
+      <div class="hero-avatar">小</div>
+      <div class="hero-copy">
+        <div>
+          <p class="section-title">AI 工程師 / FinTech 顧問 / 科技業</p>
+          <h1>王小明</h1>
+          <p>透過演算法與資料工程，打造有溫度的智慧金融服務，並協助顧問團隊轉譯企業問題成為具體 AI 解決方案。</p>
+        </div>
+        <div class="pill-list">
+          <span class="pill">AI 工程師</span>
+          <span class="pill">FinTech</span>
+          <span class="pill">顧問業</span>
+          <span class="pill">機器學習</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section card panel">
+      <div class="section-title">About</div>
+      <h2 class="section-subtitle">關於我</h2>
+      <div class="about-grid">
+        <p>我來自中原大學資訊管理系，對資料科學與 AI 模型有深厚興趣。喜歡將實際問題拆解成可量化指標，並透過程式與數據建立穩健的系統。</p>
+        <p>在校期間參與多次專題與競賽，熟悉 Python、機器學習、資料視覺化與專案協作流程。我的目標是投入 FinTech 或顧問團隊，協助企業提升決策效率與產品智能。</p>
+      </div>
+      <div class="about-meta">
+        <div class="badge">求職方向：AI 工程師 / FinTech / 顧問業</div>
+        <div class="badge">所在地：台灣 · 桃園</div>
+        <div class="badge">語言：中文 / 英文</div>
+      </div>
+    </section>
+
+    <section id="skills" class="section card panel">
+      <div class="section-title">Skills</div>
+      <h2 class="section-subtitle">核心技能</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>AI / 機器學習</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">NLP</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>資料工程</h3>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">ETL</span>
+            <span class="tag">Data Lake</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>產品與專案</h3>
+          <div class="tags">
+            <span class="tag">專案管理</span>
+            <span class="tag">需求拆解</span>
+            <span class="tag">資料分析</span>
+            <span class="tag">可視化</span>
+            <span class="tag">跨團隊協作</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section card panel">
+      <div class="section-title">Education</div>
+      <h2 class="section-subtitle">學歷</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>中原大學 資訊管理學系</h3>
+            <div class="timeline-date">2021 - 2025</div>
+          </div>
+          <p>主修資料管理、系統設計與商業分析。學習過程中著重實務專題，培養跨領域思維與技術落地能力。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>AI 與資料競賽專題</h3>
+            <div class="timeline-date">2023 - 2025</div>
+          </div>
+          <p>參與校內外資料科學專題，涵蓋智慧客服、金融預測與情感分析。專題成果連續兩年獲得優良報告與業師肯定。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section card panel">
+      <div class="section-title">Experience</div>
+      <h2 class="section-subtitle">經歷</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>AI 研究助理</h3>
+            <div class="timeline-date">2024.03 - 2025.01</div>
+          </div>
+          <p>負責語意分析模型訓練與資料清理流程優化，協作教授與企業專案，提升文字特徵擷取效率。</p>
+          <ul>
+            <li>建立標記資料集並完成模型迭代，準確率提高 18%</li>
+            <li>優化資料管道，ETL 時間縮短 32%</li>
+          </ul>
+          <div class="stat"><span>18%</span> 模型準確率提升</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>FinTech 專題實習</h3>
+            <div class="timeline-date">2023.07 - 2023.12</div>
+          </div>
+          <p>與團隊開發智能貸款風險評估工具，分析用戶行為指標與信貸歷程，提供模型輸出與報表視覺化。</p>
+          <ul>
+            <li>完成 5 種風險特徵工程，提升判別力</li>
+            <li>專案成果於校內展示獲得 2 家企業提案邀約</li>
+          </ul>
+          <div class="stat"><span>5</span> 種核心風險指標</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards" class="section card panel">
+      <div class="section-title">Awards</div>
+      <h2 class="section-subtitle">競賽獎項</h2>
+      <div class="award-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <article class="award-card">
+          <div class="badge-emoji">🏆 國際資料科學挑戰賽 - 優選</div>
+          <h3>可解釋信用風險模型</h3>
+          <p>以透明化特徵分析提升模型信任度，專案得到評審團的資料設計與實務應用肯定。</p>
+        </article>
+        <article class="award-card">
+          <div class="badge-emoji">🥈 全國 AI 應用競賽 - 亞軍</div>
+          <h3>智慧客服情緒分析</h3>
+          <p>導入情緒分類與回應優化機制，將客服滿意度預測準確度提升至 74%。</p>
+        </article>
+        <article class="award-card">
+          <div class="badge-emoji">✨ 校園創新專題 - 優良</div>
+          <h3>FinTech 風險管理平台</h3>
+          <p>專題結合資料視覺化與風險評估，成功獲得業師與學校評分雙優。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section card panel">
+      <div class="section-title">Projects</div>
+      <h2 class="section-subtitle">作品集</h2>
+      <div class="project-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <article class="project-card">
+          <div class="badge-emoji">💡 AI 工具</div>
+          <h3>動態貸款評估模型</h3>
+          <p>結合時間序列與信用特徵，建構可視化風險報表與建議策略。</p>
+          <div class="project-meta">Python / ML / 可視化</div>
+        </article>
+        <article class="project-card">
+          <div class="badge-emoji">📊 分析專案</div>
+          <h3>消費行為資料看板</h3>
+          <p>將交易數據轉換為儀表板，協助決策者快速掌握用戶結構與趨勢。</p>
+          <div class="project-meta">SQL / Power BI / ETL</div>
+        </article>
+        <article class="project-card">
+          <div class="badge-emoji">🔍 研究專題</div>
+          <h3>情緒分析客服系統</h3>
+          <p>應用 NLP 與分類模型分析客服意見，提出服務優化方向。</p>
+          <div class="project-meta">NLP / Python / 報告撰寫</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section card panel">
+      <div class="section-title">Contact</div>
+      <h2 class="section-subtitle">聯絡我</h2>
+      <div class="contact-grid">
+        <a class="contact-button" href="mailto:demo@example.com">✉️ Email</a>
+        <a class="contact-button" href="https://github.com/username" target="_blank" rel="noreferrer">🐙 GitHub</a>
+        <a class="contact-button" href="https://www.linkedin.com/in/username" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+        <a class="contact-button" href="https://www.instagram.com/username" target="_blank" rel="noreferrer">📸 IG</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
