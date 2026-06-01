@@ -32,6 +32,8 @@
     body {
       margin: 0;
       min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.75;
       background: radial-gradient(circle at 12% 12%, var(--bg-1), transparent 22%),
                   radial-gradient(circle at 88% 18%, var(--bg-2), transparent 18%),
                   linear-gradient(180deg, #eef4ff 0%, #f7f9ff 55%, #ffffff 100%);
@@ -76,7 +78,7 @@
       transform: translateX(-50%);
       z-index: 20;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
       gap: 10px;
       padding: 10px 18px;
@@ -85,15 +87,18 @@
       backdrop-filter: blur(24px);
       border: 1px solid rgba(255, 255, 255, 0.65);
       box-shadow: 0 24px 60px rgba(43, 72, 168, 0.14);
+      white-space: nowrap;
+      overflow-x: auto;
     }
 
     .toc a {
       color: var(--text);
       text-decoration: none;
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 999px;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
+      white-space: nowrap;
       transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
     }
 
@@ -177,17 +182,17 @@
 
     .hero-copy h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 4vw, 3.6rem);
-      line-height: 1;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
       letter-spacing: -0.03em;
     }
 
     .hero-copy p {
       margin: 0;
       max-width: 680px;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     .pill-list {
@@ -225,7 +230,8 @@
     .about-grid p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.8;
+      font-size: 1rem;
+      line-height: 1.9;
     }
 
     .about-meta {
@@ -347,13 +353,13 @@
     .timeline-item ul {
       margin: 0;
       color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.97rem;
+      font-size: 1rem;
+      line-height: 1.95;
     }
 
     .timeline-item ul {
       padding-left: 18px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .stat {
@@ -417,8 +423,8 @@
     .project-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.97rem;
+      font-size: 1rem;
+      line-height: 1.9;
     }
 
     .project-meta {
@@ -427,7 +433,7 @@
       gap: 12px;
       margin-top: 14px;
       color: var(--primary);
-      font-size: 0.94rem;
+      font-size: 0.9rem;
       font-weight: 700;
     }
 
@@ -462,9 +468,10 @@
     }
 
     .section-subtitle {
-      font-size: 1.24rem;
+      font-size: 1.22rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      line-height: 1.3;
+      margin-bottom: 10px;
     }
 
     @keyframes glowShift {
@@ -541,15 +548,15 @@
       <div class="hero-avatar">C</div>
       <div class="hero-copy">
         <div>
-          <p class="section-title">AI 工程師 / FinTech 顧問 / 科技業</p>
-          <h1>Cynthia</h1>
-          <p>透過演算法與資料工程，打造有溫度的智慧金融服務，並協助顧問團隊轉譯企業問題成為具體 AI 解決方案。</p>
+          <p class="section-title">大學生 / 社團 / 服務學習</p>
+          <h1>丁聖曦 Cynthia</h1>
+          <p>盡力做好可以做的事！對教育充滿熱情，透過跨領域學習與社會實踐，探索技術與人文的交匯點。</p>
         </div>
         <div class="pill-list">
-          <span class="pill">AI 工程師</span>
-          <span class="pill">FinTech</span>
-          <span class="pill">顧問業</span>
-          <span class="pill">機器學習</span>
+          <span class="pill">資訊管理</span>
+          <span class="pill">教學</span>
+          <span class="pill">志工服務</span>
+          <span class="pill">程式學習</span>
         </div>
       </div>
     </section>
@@ -558,12 +565,12 @@
       <div class="section-title">About</div>
       <h2 class="section-subtitle">關於我</h2>
       <div class="about-grid">
-        <p>我是 Cynthia，現在是中原大學資訊管理系 113 年級生。對我來說，AI 的魅力不只是做出一個模型，而是把那些抽象概念變成手機上真的可以點開、看得懂、用得順的功能。從 SwiftUI 到 MVVM，我喜歡把 AI 概念和 iOS 實作連在一起，讓每個 spec driven coding 的迭代都有明確成果。這種把想法變成產品的過程，才是我每天最想做的事。</p>
-        <p>我相信最實用的 AI，是那種你不需要解釋太多就能上手的工具。想加入的團隊，是既重視工程品質、又願意把 AI 工具導入真實產品線的科技團隊；最好是行動應用或 AI 產品開發組。對我來說，最大的反差是：最酷的技術，往往最後靠一頁 SwiftUI 和一個 prompt 才能真正跑起來。</p>
+        <p>我是丁聖曦（Cynthia），19 歲，現就讀中原大學資訊管理系。我來自台北市，戶籍在台中市，就讀高中母校是大直高中。我喜歡深入思考問題的本質，對教育與技術的結合充滿熱情。</p>
+        <p>我積極參與社團、志工服務與學校活動，透過多元的實踐經驗來深化學習。無論是在社團擔任執行秘書、參與社會服務隊的柬埔寨服務學習，或是與同學協作進行技術專案，我都希望能將所學應用於幫助他人。我的自我期許是「盡力做好可以做的事」，相信每一段經驗都能化為成長的養分。</p>
       </div>
       <div class="about-meta">
-        <div class="badge">求職方向：AI 工程師 / FinTech / 顧問業</div>
-        <div class="badge">所在地：台灣 · 桃園</div>
+        <div class="badge">生日：95年04月20日（牡羊座）</div>
+        <div class="badge">所在地：台北市</div>
         <div class="badge">語言：中文 / 英文</div>
       </div>
     </section>
@@ -573,52 +580,32 @@
       <h2 class="section-subtitle">核心技能</h2>
       <div class="skills-grid">
         <div class="skill-group">
-          <h3>💻 程式</h3>
+          <h3>💻 程式語言</h3>
           <div class="tags">
-            <span class="tag">SwiftUI（熟練）</span>
-            <span class="tag">Swift（熟練）</span>
-            <span class="tag">Python（熟練）</span>
-            <span class="tag">SQL（熟練）</span>
-            <span class="tag">JavaScript（會用）</span>
+            <span class="tag">Python（60%）</span>
+            <span class="tag">Java（70%）</span>
+            <span class="tag">HTML（50%）</span>
+            <span class="tag">CSS（50%）</span>
+            <span class="tag">C++（40%）</span>
           </div>
         </div>
         <div class="skill-group">
-          <h3>🤖 AI 協作工具</h3>
+          <h3>🎓 專業技能</h3>
           <div class="tags">
-            <span class="tag">GitHub Copilot（熟練）</span>
-            <span class="tag">ChatGPT（熟練）</span>
-            <span class="tag">Gemini（會用）</span>
-            <span class="tag">Notion AI（會用）</span>
-            <span class="tag">ROCE Prompt Engineering（熟練）</span>
+            <span class="tag">教學（良好）</span>
+            <span class="tag">朗讀（精通）</span>
+            <span class="tag">寫作（普通）</span>
+            <span class="tag">剪輯（普通）</span>
+            <span class="tag">Arduino（良好）</span>
           </div>
         </div>
         <div class="skill-group">
-          <h3>📊 專案管理</h3>
+          <h3>🌟 興趣與特質</h3>
           <div class="tags">
-            <span class="tag">GitHub Projects（熟練）</span>
-            <span class="tag">Git 版本控制（熟練）</span>
-            <span class="tag">Agile / Sprint（會用）</span>
-            <span class="tag">Issue Tracking（會用）</span>
-            <span class="tag">專案流程設計（熟練）</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>🏢 語言</h3>
-          <div class="tags">
-            <span class="tag">中文（母語）</span>
-            <span class="tag">英文（專業）</span>
-            <span class="tag">台語（日常）</span>
-            <span class="tag">技術英文寫作（熟練）</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>🌱 軟實力</h3>
-          <div class="tags">
-            <span class="tag">自主學習（熟練）</span>
-            <span class="tag">跨團隊協作（熟練）</span>
-            <span class="tag">校內社團推動（會用）</span>
-            <span class="tag">快速迭代（熟練）</span>
-            <span class="tag">結構化溝通（會用）</span>
+            <span class="tag">聽音樂</span>
+            <span class="tag">跨領域學習</span>
+            <span class="tag">教育服務</span>
+            <span class="tag">社團活動</span>
           </div>
         </div>
       </div>
@@ -631,16 +618,16 @@
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>中原大學 資訊管理學系</h3>
-            <div class="timeline-date">2021 - 2025</div>
+            <div class="timeline-date">2021 - 現在</div>
           </div>
-          <p>主修資料管理、系統設計與商業分析。學習過程中著重實務專題，培養跨領域思維與技術落地能力。</p>
+          <p>在中原大學就讀資訊管理系，積極參與課程活動、社團組織與各類志工服務，透過多元實踐深化對資訊與人文的整合認識。</p>
         </div>
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>AI 與資料競賽專題</h3>
-            <div class="timeline-date">2023 - 2025</div>
+            <h3>大直高中</h3>
+            <div class="timeline-date">2018 - 2021</div>
           </div>
-          <p>參與校內外資料科學專題，涵蓋智慧客服、金融預測與情感分析。專題成果連續兩年獲得優良報告與業師肯定。</p>
+          <p>高中就讀於台北市大直高中，培養多元興趣與基礎學術能力。</p>
         </div>
       </div>
     </section>
@@ -651,31 +638,52 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>AI 研究助理</h3>
-            <div class="timeline-date">2024.03 - 2025.01</div>
+            <h3>社團執行秘書 & 社團活動</h3>
+            <div class="timeline-date">大一上</div>
           </div>
           <ul>
-            <li>規劃語意分析模型訓練流程，管理 3 個資料來源與 120,000 筆訓練資料</li>
-            <li>建立資料標記與清理 SOP，讓資料品質提升 28%</li>
-            <li>優化訓練管道，將模型訓練時間從 10 小時縮短 32%</li>
-            <li>分析文字特徵表現，使分類準確率提升 18%</li>
-            <li>協作教授專案，支援 2 個企業合作報告產出</li>
+            <li>現任社團執行秘書，負責社團課程組織與運作</li>
+            <li>定期參與社課，學習實務急救知識與操作技能</li>
+            <li>擔任小運會志工，協助運動會相關工作</li>
+            <li>參與社團舉辦的捐血活動，投入志工服務</li>
+            <li>計畫於大二擔任更重要的幹部角色，貢獻社團發展</li>
           </ul>
-          <div class="stat"><span>18%</span> 模型準確率提升</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>FinTech 專題實習</h3>
-            <div class="timeline-date">2023.07 - 2023.12</div>
+            <h3>管理學課程 - 闖關遊戲企劃</h3>
+            <div class="timeline-date">大一下</div>
           </div>
           <ul>
-            <li>帶領 4 人團隊設計智能貸款風險評估架構</li>
-            <li>建立 5 種風險特徵工程，讓模型判別力提升 22%</li>
-            <li>分析 1,200 筆用戶行為資料，輸出可視化報表</li>
-            <li>開發報表視覺化流程，促成 2 家企業提案邀約</li>
-            <li>優化資料處理流程，將分析時間縮短 30%</li>
+            <li>參與課程團隊規劃的闖關遊戲企劃</li>
+            <li>擔任其中一關的關主，負責場地佈置與執行</li>
+            <li>親身體驗時間管理、團隊協調與應變能力</li>
+            <li>獲得寶貴的溝通經驗與實務管理認識</li>
           </ul>
-          <div class="stat"><span>5</span> 種核心風險指標</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>服務學習 - 柬埔寨志工隊</h3>
+            <div class="timeline-date">課外活動</div>
+          </div>
+          <ul>
+            <li>負責募集物資與娃娃，支援柬埔寨教育計畫</li>
+            <li>參與英文營隊課程內容規劃與教學</li>
+            <li>體驗跨文化交流，學習有限資源下的創意教育</li>
+            <li>從孩子回饋中獲得成就感，深刻體會教育的影響力</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>永齡希望小學課輔老師</h3>
+            <div class="timeline-date">工作經歷</div>
+          </div>
+          <ul>
+            <li>在中壢國小擔任英文課輔老師</li>
+            <li>協助學生學習英文，參與備課相關討論</li>
+            <li>學會調整教學方式以符合不同孩子的需求</li>
+            <li>累積教育現場的實務經驗與耐心指導能力</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -685,19 +693,19 @@
       <h2 class="section-subtitle">競賽獎項</h2>
       <div class="award-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <article class="award-card">
-          <div class="badge-emoji">🏆 國際資料科學挑戰賽 - 優選</div>
-          <h3>可解釋信用風險模型</h3>
-          <p>以透明化特徵分析提升模型信任度，專案得到評審團的資料設計與實務應用肯定。</p>
+          <div class="badge-emoji">� PSBH 國際問題解決松</div>
+          <h3>團隊協作與創新思維</h3>
+          <p>透過團隊合作討論真實情境議題，以創新角度提出解方。體驗輪椅壘球，深入理解平權與無障礙環境的重要性。</p>
         </article>
         <article class="award-card">
-          <div class="badge-emoji">🥈 全國 AI 應用競賽 - 亞軍</div>
-          <h3>智慧客服情緒分析</h3>
-          <p>導入情緒分類與回應優化機制，將客服滿意度預測準確度提升至 74%。</p>
+          <div class="badge-emoji">💻 統計學 AI 評分系統專案</div>
+          <h3>技術團隊協作與開發經驗</h3>
+          <p>加入技術組負責系統架構討論，從資料格式設計到模型測試全程參與。體會數據轉化為實際工具的過程與團隊合作的重要性。</p>
         </article>
         <article class="award-card">
-          <div class="badge-emoji">✨ 校園創新專題 - 優良</div>
-          <h3>FinTech 風險管理平台</h3>
-          <p>專題結合資料視覺化與風險評估，成功獲得業師與學校評分雙優。</p>
+          <div class="badge-emoji">🌟 多元課程與志工貢獻</div>
+          <h3>學習與服務的綜合實踐</h3>
+          <p>透過社團、課程活動與志工服務的多元參與，累積領導力、溝通力與服務精神，深化對教育與社會的理解。</p>
         </article>
       </div>
     </section>
@@ -706,24 +714,7 @@
       <div class="section-title">Projects</div>
       <h2 class="section-subtitle">作品集</h2>
       <div class="project-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-        <article class="project-card">
-          <div class="badge-emoji">💡 AI 工具</div>
-          <h3>動態貸款評估模型</h3>
-          <p>結合時間序列與信用特徵，建構可視化風險報表與建議策略。</p>
-          <div class="project-meta">Python / ML / 可視化</div>
-        </article>
-        <article class="project-card">
-          <div class="badge-emoji">📊 分析專案</div>
-          <h3>消費行為資料看板</h3>
-          <p>將交易數據轉換為儀表板，協助決策者快速掌握用戶結構與趨勢。</p>
-          <div class="project-meta">SQL / Power BI / ETL</div>
-        </article>
-        <article class="project-card">
-          <div class="badge-emoji">🔍 研究專題</div>
-          <h3>情緒分析客服系統</h3>
-          <p>應用 NLP 與分類模型分析客服意見，提出服務優化方向。</p>
-          <div class="project-meta">NLP / Python / 報告撰寫</div>
-        </article>
+
       </div>
     </section>
 
@@ -732,7 +723,7 @@
       <h2 class="section-subtitle">聯絡我</h2>
       <div class="contact-grid">
         <a class="contact-button" href="mailto:demo@example.com">✉️ Email</a>
-        <a class="contact-button" href="https://github.com/username" target="_blank" rel="noreferrer">🐙 GitHub</a>
+        <a class="contact-button" href="https://github.com/11344114/MmiddleExam" target="_blank" rel="noreferrer">🐙 GitHub</a>
         <a class="contact-button" href="https://www.linkedin.com/in/username" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
         <a class="contact-button" href="https://www.instagram.com/username" target="_blank" rel="noreferrer">📸 IG</a>
       </div>
